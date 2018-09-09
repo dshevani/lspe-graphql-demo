@@ -1,9 +1,8 @@
     # lspe-graphql-demo
     
     
-    
-    Pre Requisites
-    ==============
+Pre Requisites
+==============
     
     1. Install Node JS and NPM from https://nodejs.org/en/
     2. Validate using npm -v and node -v
@@ -11,8 +10,8 @@
     4. Validate Mongo is up and running on default port 27017
     5. Add bin folder to PATH variable so that you can run Mongo commands from shell
     
-    Set up
-    ======
+Set up
+======
     
     1. Create new directory : "LSPE-GraphQL-Demo"
     2. cd LSPE-GraphQL-Demo
@@ -23,8 +22,8 @@
     7. npm install bluebird cors mongoose --save
     
     
-    Code Base
-    ==========
+Code Base
+==========
     
     1. Create Directories
         config
@@ -36,7 +35,7 @@
     
     2. Create Files
     
-        config/config
+config/config
     
     module.exports = {
         //MongoDB configuration
@@ -49,7 +48,7 @@
     };
     
     
-        config/mongoose.js
+config/mongoose.js
     
     var env = process.env.NODE_ENV || 'development',
         config = require('./config')[env],
@@ -66,7 +65,7 @@
         return db;
     };
     
-        models/user.js
+models/user.js
     
     var mongoose = require('mongoose');
     var Schema   = mongoose.Schema;
@@ -81,7 +80,7 @@
     var Model = mongoose.model('User', userSchema);
     module.exports = Model;
     
-        graphql/types/user.js
+graphql/types/user.js
     
     var GraphQLObjectType = require('graphql').GraphQLObjectType;
     var GraphQLNonNull = require('graphql').GraphQLNonNull;
@@ -104,7 +103,7 @@
     });
     
     
-        graphql/queries/user.js
+graphql/queries/user.js
     
     var GraphQLObjectType = require('graphql').GraphQLObjectType;
     var GraphQLList = require('graphql').GraphQLList;
@@ -131,7 +130,7 @@
     });
     
     
-        graphql/mutations/add.js
+graphql/mutations/add.js
     
     var GraphQLNonNull = require('graphql').GraphQLNonNull;
     var GraphQLString = require('graphql').GraphQLString;
@@ -155,7 +154,7 @@
       }
     }
     
-        graphql/mutations/update.js
+graphql/mutations/update.js
     
     var GraphQLNonNull = require('graphql').GraphQLNonNull;
     var GraphQLString = require('graphql').GraphQLString;
@@ -183,7 +182,7 @@
       }
     }
     
-        graphql/mutations/remove.js
+graphql/mutations/remove.js
     
     var GraphQLNonNull = require('graphql').GraphQLNonNull;
     var GraphQLString = require('graphql').GraphQLString;
@@ -206,7 +205,7 @@
       }
     }
     
-        graphql/mutations/index.js
+graphql/mutations/index.js
     
     var addUser = require('./add').add;
     var removeUser = require('./remove').remove;
@@ -218,7 +217,7 @@
       updateUser
     }
     
-        graphql/index.js
+graphql/index.js
     
     var GraphQLSchema = require('graphql').GraphQLSchema;
     var GraphQLObjectType = require('graphql').GraphQLObjectType;
@@ -233,7 +232,7 @@
       })
     })
     
-        server.js
+server.js
     
     const express = require("express");
     const mongoose = require('./config/mongoose');
@@ -257,15 +256,15 @@
     });
     
     
-    Run
-    ====
+Run
+====
     
     1. node server.ls
     2. Run GraphQL queries
     
     
-    GraphQL Queries
-    ===============
+GraphQL Queries
+===============
     
     {
         users {
@@ -295,8 +294,8 @@
     }
     
     
-    Mongo Commands
-    ==============
+Mongo Commands
+==============
     
     mongo
     use graphql
